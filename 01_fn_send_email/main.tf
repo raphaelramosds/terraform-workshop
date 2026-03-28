@@ -86,6 +86,46 @@ resource "google_cloud_run_service_iam_member" "public_invoker" {
   member   = "allUsers"
 }
 
+variable "project_id" {
+  description = "GCP project ID"
+  type        = string
+}
+
+variable "region" {
+  description = "GCP region for the Cloud Run function"
+  type        = string
+  default     = "us-central1"
+}
+
+variable "smtp_host" {
+  description = "SMTP server host"
+  type        = string
+}
+
+variable "smtp_port" {
+  description = "SMTP server port"
+  type        = string
+  default     = "587"
+}
+
+variable "smtp_user" {
+  description = "SMTP username"
+  type        = string
+}
+
+variable "smtp_password" {
+  description = "SMTP password"
+  type        = string
+  sensitive   = true
+}
+
+variable "smtp_from" {
+  description = "Sender email address (defaults to smtp_user)"
+  type        = string
+  default     = ""
+}
+
+
 output "function_url" {
   description = "URL of the deployed Cloud Run function"
   value       = google_cloudfunctions2_function.send_email.service_config[0].uri
