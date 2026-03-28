@@ -1,0 +1,5 @@
+smtp_host     = "smtp.example.com"
+smtp_port     = "587"
+smtp_user     = "user@example.com"
+smtp_password = "your-password-here"
+smtp_from     = "user@example.com"
