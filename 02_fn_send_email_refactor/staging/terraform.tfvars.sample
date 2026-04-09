@@ -1,0 +1,7 @@
+project_id    = "your-staging-project-id"
+region        = "us-central1"
+smtp_host     = "smtp.example.com"
+smtp_port     = "587"
+smtp_user     = "user@example.com"
+smtp_password = "your-smtp-password"
+smtp_from     = ""
