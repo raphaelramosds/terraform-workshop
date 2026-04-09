@@ -21,6 +21,13 @@ provider "google" {
   region  = var.region
 }
 
+// Enable Cloud Functions API
+resource "google_project_service" "cloudfunctions" {
+  project            = var.project_id
+  service            = "cloudfunctions.googleapis.com"
+  disable_on_destroy = false
+}
+
 data "archive_file" "function_zip" {
   type        = "zip"
   source_dir  = "${path.module}/function"
@@ -46,8 +53,9 @@ resource "google_service_account" "function_sa" {
 }
 
 resource "google_cloudfunctions2_function" "send_email" {
-  name     = "send-email"
-  location = var.region
+  name       = "send-email"
+  location   = var.region
+  depends_on = [google_project_service.cloudfunctions]
 
   build_config {
     runtime     = "python312"
