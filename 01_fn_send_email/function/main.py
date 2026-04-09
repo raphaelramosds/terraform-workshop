@@ -9,7 +9,22 @@ import functions_framework
 
 @functions_framework.http
 def send_email(request):
-    """HTTP Cloud Function to send email via SMTP."""
+    """
+    HTTP Cloud Function to send email via SMTP.
+
+    Request body should be JSON with the following fields:
+    - to: recipient email address (required)
+    - subject: email subject (optional, default: "(no subject)")
+    - body: email body (optional, default: "")
+
+    Ex.: 
+    {
+        "to": "recipient@example.com",
+        "subject": "Hello from Cloud Run",
+        "body": "This is a test email sent from a Cloud Run service."
+    }
+    
+    """
     if request.method != "POST":
         return (json.dumps({"error": "Only POST method is allowed"}), 405, {"Content-Type": "application/json"})
 
