@@ -5,7 +5,7 @@ data "archive_file" "function_zip" {
 }
 
 resource "google_storage_bucket" "function_bucket" {
-  name                        = "${var.project_id}-fn-send-email"
+  name                        = "${var.project_id}-fn-send-email-refactor"
   location                    = var.region
   uniform_bucket_level_access = true
   force_destroy               = true

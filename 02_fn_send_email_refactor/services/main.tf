@@ -18,12 +18,12 @@ resource "google_project_service" "cloudfunctions" {
 }
 
 resource "google_service_account" "function_sa" {
-  account_id   = "send-email-fn-sa"
+  account_id   = "send-email-refactor-fn-sa"
   display_name = "Send Email Cloud Function SA"
 }
 
 resource "google_cloudfunctions2_function" "send_email" {
-  name       = "send-email"
+  name       = "send-email-refactor"
   location   = var.region
   depends_on = [google_project_service.cloudfunctions]
 

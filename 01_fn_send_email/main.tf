@@ -1,7 +1,7 @@
 terraform {
   backend "gcs" {
     bucket = "storage-terraform-states"
-    prefix = "fn-send-email"
+    prefix = "fn-send-email/v1"
   }
 
   required_providers {
